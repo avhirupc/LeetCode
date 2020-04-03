@@ -1,0 +1,57 @@
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        memory=[[]]*numRows
+        row_ptr=0
+        flg=0
+        if numRows==0 or numRows==1:
+            return s
+        for char in s:
+            print(char,memory)
+            if flg==0 and row_ptr<numRows:
+                memory[row_ptr]+=[char]
+                row_ptr+=1
+                print(11)
+            elif flg==1 and row_ptr>=0:
+                memory[row_ptr]+=[char]
+                row_ptr-=1
+                print(22)
+            elif flg==0 and row_ptr==numRows:
+                flg=1
+                row_ptr-=2
+                print(33)
+            elif flg==1 and row_ptr==-1:
+                flg=0
+                row_ptr+=2
+                print(44)
+        print(memory)
+        return "".join(["".join(mem) for mem in memory])
+
+def stringToString(input):
+    import json
+
+    return json.loads(input)
+
+def main():
+    import sys
+    import io
+    def readlines():
+        for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
+            yield line.strip('\n')
+
+    lines = readlines()
+    while True:
+        try:
+            line = next(lines)
+            s = stringToString(line);
+            line = next(lines)
+            numRows = int(line);
+            
+            ret = Solution().convert(s, numRows)
+
+            out = (ret);
+            print(out)
+        except StopIteration:
+            break
+
+if __name__ == '__main__':
+    main()

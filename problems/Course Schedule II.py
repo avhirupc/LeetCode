@@ -11,7 +11,7 @@ def make_graph(numCourses,prerequisites):
 def topSort(start,graph,visited,recstk,stk):
     if start in visited:
         if recstk[start]:
-            raise Exception("Cycle")
+            raise Exception("Cycle Detected")
         else:
             return
     

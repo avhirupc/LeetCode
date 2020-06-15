@@ -27,5 +27,36 @@ class Solution(object):
                 return False
             i = i+1+new       
         return True
+
+"""DP Solution """
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        sptr,tptr=0,0
+        char_encountered=[0]*len(t)
+        if s=="" :
+            return True
+        if t=="":
+            return False
+            
+        
+        if s[sptr]==t[tptr]:
+            char_encountered[tptr]=1
+            sptr+=1
+            tptr+=1
+        else:
+            tptr+=1
+        
+        while(sptr<len(s) and tptr<len(t)):
+            if s[sptr]==t[tptr]:
+                char_encountered[tptr]=char_encountered[tptr-1]+1
+                sptr+=1
+            else:
+                char_encountered[tptr]=char_encountered[tptr-1]
+            tptr+=1
+        
+        if char_encountered[-1]==len(s):
+            return True
+        else:
+            return False
             
             

@@ -1,0 +1,19 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        c = 1
+        itr=len(digits)-1
+        
+        while (itr>=0) :
+            add = digits[itr]+c
+            c = add // 10
+            digits[itr] = add % 10
+            itr-=1            
+            if c==0:
+                break
+        
+        if c:
+            digits.insert(0,c)
+        
+        return digits
+        
+        

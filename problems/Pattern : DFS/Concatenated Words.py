@@ -41,3 +41,28 @@ class Solution:
         return True if len(flg)>1 else False
         
         
+"""Accepted"""
+
+class Solution:
+    def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
+        mem = set(words)
+        
+        def isConcatDFS(word):
+            #checks if concatenated by multilpe
+            for pos in range(1,len(word)):
+                prefix = word[:pos]
+                suffix = word[pos:]
+                if prefix in mem and suffix in mem:
+                    return True
+                if prefix in mem and isConcatDFS(suffix):
+                    return True
+            
+            return False
+            
+            
+            
+        result_set=[]
+        for word in words:
+            if isConcatDFS(word):
+                result_set.append(word)
+        return result_set

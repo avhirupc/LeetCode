@@ -1,0 +1,3 @@
+* If one builds an array bitmask with the help of XOR operator, following bitmask ^= x strategy, the bitmask would keep only the bits which appear odd number of times. 
+* x & (-x) is a way to isolate the rightmost 1-bit, i.e. to keep the rightmost 1-bit and to set all the others bits to zero. 
+* An interview tip. Imagine, you have a problem to indentify an array element (or elements), which appears exactly given number of times. Probably, the key is to build first an array bitmask using XOR operator. Examples: In-Place Swap, Single Number, Single Number II.
